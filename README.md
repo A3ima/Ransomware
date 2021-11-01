@@ -11,7 +11,7 @@ I used advanced VM evasion techniques, combined with a very strong encryption.
 * Sleeping for a certain amount of time.
 
 # Encryption
-We are using a 512 bits key with AES encryption (Decrypting 256 key would approximatly take 2.29 * 10^32 years).
+We are using a 512 bits key with RSA encryption (Decrypting 256 key would approximatly take 2.29 * 10^32 years).
 We are also using what's called the RIPlace technique, to avoid AV detection.
 [See more about RIPlace](https://www.bleepingcomputer.com/news/security/new-riplace-bypass-evades-windows-10-av-ransomware-protection/)
 
