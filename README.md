@@ -23,8 +23,8 @@ Once it's done waiting, it copies it self to the Startup folder, adds a new Regi
 Once the computer is on Safe Mode, it starts encrypting the files, and adding note on the Desktop to explain the user what to do.
 
 # Note
-This project doesn't allow to decrypt the data back, while it tells the user it can.
-So don't look for the decrypt method.
+To properly run this project, you need Administrator Privileges (because of the Registry key), so if you remove the Registry key methods, it can be executed on any user.
+This project doesn't allow to decrypt the data back, while it tells the user it can, so don't look for the decrypt method.
 
 # To Do
 * Create a timer, that when the ransomware start will count for 2 hours. After 2 hours the system will get deleted.
