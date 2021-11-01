@@ -26,6 +26,11 @@ Once the computer is on Safe Mode, it starts encrypting the files, and adding no
 This project doesn't allow to decrypt the data back, while it tells the user it can.
 So don't look for the decrypt method.
 
+# To Do
+* Create a timer, that when the ransomware start will count for 2 hours. After 2 hours the system will get deleted.
+* Hijack the System like NotPetya ransomware does.
+* Use the RIPlace method.
+
 # Disclaimer
 ## USE THIS PROJECT FOR EDUCATIONAL PURPOSES ONLY. THIS IS A VERY HARMFUL PROJECT WITH NO OPTION TO RETURN BACK THE DATA.
 ## I AM NOT RESPONSIBLE FOR ANYTHING YOU DO WITH THIS PROJECT.
