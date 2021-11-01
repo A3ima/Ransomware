@@ -4,7 +4,6 @@ import sys
 import string
 import random
 import signal
-import base64
 import psutil
 import threading
 import pyautogui
