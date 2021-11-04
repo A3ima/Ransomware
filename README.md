@@ -29,8 +29,6 @@ This project doesn't allow to decrypt the data back, while it tells the user it 
 As soon as it's done encrypting the system it will delete itself.
 
 # To Do
-* Create a timer, that when the ransomware start will count for 2 hours. After 2 hours the system will get deleted.
-* Hijack the System like NotPetya ransomware does.
 * Use the RIPlace method.
 
 # Disclaimer
