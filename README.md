@@ -30,6 +30,7 @@ As soon as it's done encrypting the system it will delete itself.
 
 # To Do
 * Use the RIPlace method.
+* Spread across the network.
 
 # Disclaimer
 ### USE THIS PROJECT FOR EDUCATIONAL PURPOSES ONLY. THIS IS A VERY HARMFUL PROJECT WITH NO OPTION TO RETRIEVE THE DATA ONCE EXECUTED.
