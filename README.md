@@ -8,7 +8,6 @@ I used advanced VM evasion techniques, combined with a very strong encryption.
 * Checking for certain MAC addresses.
 * Checking for running services and tasks.
 * Checking for mouse movement.
-* Sleeping for a certain amount of time.
 
 # Encryption
 We are using a 512 bits key with RSA encryption (Decrypting 256 key would approximatly take 2.29 * 10^32 years).
@@ -16,13 +15,12 @@ We are also using what's called the RIPlace technique, to avoid AV detection.
 [See more about RIPlace.](https://www.bleepingcomputer.com/news/security/new-riplace-bypass-evades-windows-10-av-ransomware-protection/)
 
 # How the Ransomware works
-First the program checks if it's already run by checking for certain registry key and file.
-If it's the first time it runs, it will evade detection by doing the checks above.
+First the program checks if it's already run by checking if a registry key and file exists.
+If yes, it will start the ransomware, which means Generating 512 bits key, encrypting everything, adding a note to the user and shredding itself from the system.
 
-If the program detects VM or someone test environment, it will SHRED itself from the system.
-else it copies itself to the Startup folder, adds a new Registry key, and then it restarts into Safe Mode without network connection (Studies found that most AV don't run properly on Safe Mode).
+else it will evade detection by doing the checks above, once it's done it will write itself to the registry and reboot into safe mode.
 
-Once the computer is on Safe Mode, it starts encrypting the files and adding note on the Desktop to explain the user what to do.
+If the program detects VM or some test environment, it will shred itself from the system.
 
 # Note
 To properly run this project, you need Administrator Privileges (because we are writing to the Registry), so if you remove it, it can be executed without those privileges.
