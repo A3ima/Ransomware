@@ -47,7 +47,7 @@ class evador:
         if psutil.virtual_memory().total < 2900000000:
             return True
         
-        fans_data = str(self.run_powershell_command("Get-WmiObject -Class Win32_Fan"))
+        fans_data = str(self.run_powershell_command("Get-WmiObject -Class Win32_Fan")).strip()
         if fans_data == None or len(fans_data) == 0 or "ObjectNotFound" in fans_data:
             return True
         
