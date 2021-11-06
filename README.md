@@ -2,7 +2,7 @@
 In this project I created a Ransomware with Python.
 I used advanced VM evasion techniques, combined with a very strong encryption.
 
-# Evading VM and Sandbox
+# Evading Detection
 * Checking for Physics components like: Fans, CPU cores...
 * Checking for Registry keys and certain files.
 * Checking for certain MAC addresses.
